@@ -1,6 +1,8 @@
 
 package mvcExample.model.bean;
 
+import javax.swing.JOptionPane;
+
 public class Funcionario extends Pessoa {
     
     private String cargo;
@@ -50,10 +52,12 @@ public class Funcionario extends Pessoa {
     }
 
     public void calculaSalario() {
-        setSalario(1000.00);
-        if(getCargo().equals("Adm")) {
-            setSalario(getSalario() *2);
-        }         
+    	double pctreajuste = Double.parseDouble(JOptionPane.showInputDialog("Informe o percentual de reajuste:\n"
+				+ "(EM NÚMEROS DECIMAIS, 2% == 0.02) "));    
+        
+    	setSalario(getSalario() * pctreajuste);
+        
+    	JOptionPane.showMessageDialog(null, "Salário alterado para: " + getSalario());
     } 
 
 }
